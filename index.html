@@ -19,11 +19,8 @@
       --white: #FFFFFF;
     }
 
-    @media (min-width: 1024px) {
-      html { font-size: 120%; }
-    }
-
-          margin: 0;
+    * {
+      margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
@@ -119,7 +116,7 @@
 
     /* Container */
     .container {
-      max-width: 1000px;
+      max-width: 600px;
       margin: 0 auto;
       padding: 24px 16px 48px;
     }
@@ -269,23 +266,29 @@
       color: var(--dark);
       line-height: 1.6;
       margin-bottom: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
     }
 
     .qa-q span {
       color: var(--green);
-      margin-right: 4px;
+      flex-shrink: 0;
     }
 
     .qa-a {
       font-size: 13px;
       color: var(--gray);
       line-height: 1.75;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
     }
 
     .qa-a span {
       color: var(--green);
       font-weight: 700;
-      margin-right: 4px;
+      flex-shrink: 0;
     }
 
     /* Footer */
@@ -300,7 +303,23 @@
       line-height: 1.7;
     }
 
-    /* Animations */
+    @media (min-width: 1024px) {
+      .container { max-width: 800px; }
+      .hero h1 { font-size: 38px; }
+      .hero-badge { font-size: 16px; }
+      .hero-subtitle { font-size: 16px; }
+      .hero p { font-size: 18px; }
+      .step-title { font-size: 22px; }
+      .step-desc { font-size: 18px; }
+      .highlight-box { font-size: 17px; }
+      .category-phone { font-size: 20px; }
+      .category-badge { font-size: 16px; min-width: 80px; }
+      .step-number { width: 40px; height: 40px; font-size: 20px; }
+      .qa-q { font-size: 18px; }
+      .qa-a { font-size: 17px; }
+    }
+
+    
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(16px); }
       to { opacity: 1; transform: translateY(0); }
@@ -317,7 +336,7 @@
   <!-- Hero -->
   <div class="hero">
     <div class="hero-badge">📌 잠깐! 꼭 읽어주세요</div>
-    <p style="color:rgba(255,255,255,0.85); font-size:12px; margin-bottom:10px;">매일그램을 이용해 주셔서 감사합니다</p>
+    <p class="hero-subtitle" style="color:rgba(255,255,255,0.85); margin-bottom:10px;">매일그램을 이용해 주셔서 감사합니다</p>
     <h1>원활한 서비스 이용을 위해<br /><em>아래 절차</em>를 진행해주세요</h1>
 
   </div>

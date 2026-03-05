@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>매일그램 구매 완료 안내</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --yellow: #F5C800;
+      --green: #1A6B3C;
+      --green-light: #2A8A50;
+      --dark: #1A1A1A;
+      --gray: #555;
+      --light-gray: #F7F7F7;
+      --border: #E8E8E8;
+      --white: #FFFFFF;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: var(--light-gray);
+      color: var(--dark);
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .header {
+      background-color: var(--white);
+      border-bottom: 2px solid var(--yellow);
+      padding: 20px 24px;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--dark);
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: var(--green);
+    }
+
+    /* Hero */
+    .hero {
+      background-color: var(--green);
+      padding: 40px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 160px;
+      height: 160px;
+      background-color: var(--yellow);
+      border-radius: 50%;
+      opacity: 0.15;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      left: -30px;
+      width: 200px;
+      height: 200px;
+      background-color: var(--yellow);
+      border-radius: 50%;
+      opacity: 0.1;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background-color: var(--yellow);
+      color: var(--dark);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      color: var(--white);
+      font-size: 26px;
+      font-weight: 900;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 em {
+      color: var(--yellow);
+      font-style: normal;
+    }
+
+    .hero p {
+      color: rgba(255,255,255,0.8);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* Container */
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+
+    /* Step Card */
+    .step-section {
+      margin-bottom: 24px;
+    }
+
+    .step-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .step-number {
+      width: 32px;
+      height: 32px;
+      background-color: var(--green);
+      color: var(--white);
+      border-radius: 50%;
+      font-size: 15px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .step-card {
+      background-color: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .step-card-inner {
+      padding: 20px;
+    }
+
+    .step-desc {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .highlight-box {
+      background-color: #FFF9E0;
+      border-left: 3px solid var(--yellow);
+      border-radius: 0 8px 8px 0;
+      padding: 12px 14px;
+      font-size: 13px;
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    /* Category List */
+    .category-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .category-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background-color: var(--white);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s;
+    }
+
+    .category-item:active {
+      border-color: var(--green);
+    }
+
+    .category-badge {
+      background-color: var(--green);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      min-width: 68px;
+      text-align: center;
+    }
+
+    .category-info {
+      flex: 1;
+    }
+
+    .category-phone {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: 0.3px;
+    }
+
+    .category-action {
+      font-size: 12px;
+      color: var(--gray);
+      margin-top: 2px;
+    }
+
+    /* Q&A */
+    .qa-list { display:flex; flex-direction:column; gap:10px; margin-bottom:24px; }
+    .qa-item { background-color:var(--white); border-radius:12px; border:1px solid var(--border); overflow:hidden; }
+    .qa-question { display:flex; align-items:flex-start; gap:12px; padding:16px 18px; cursor:pointer; user-select:none; transition:background 0.15s; }
+    .qa-question:hover { background:#f9f9f9; }
+    .qa-q-badge { width:26px; height:26px; flex-shrink:0; background-color:var(--green); color:var(--white); border-radius:6px; font-size:13px; font-weight:900; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+    .qa-q-text { flex:1; font-size:14px; font-weight:700; color:var(--dark); line-height:1.5; }
+    .qa-arrow { font-size:11px; color:#bbb; transition:transform 0.25s; flex-shrink:0; margin-top:4px; }
+    .qa-item.open .qa-arrow { transform:rotate(180deg); }
+    .qa-answer { display:none; font-size:13px; color:var(--gray); line-height:1.75; border-top:1px solid var(--border); padding:14px 18px 16px 56px; }
+    .qa-item.open .qa-answer { display:block; }
+
+    /* Q&A */
+    .qa-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .qa-item {
+      background-color: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      padding: 18px 20px;
+    }
+
+    .qa-q {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .qa-q span {
+      color: var(--green);
+      margin-right: 4px;
+    }
+
+    .qa-a {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.75;
+    }
+
+    .qa-a span {
+      color: var(--green);
+      font-weight: 700;
+      margin-right: 4px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 0 16px 32px;
+    }
+
+    .footer p {
+      font-size: 12px;
+      color: #aaa;
+      line-height: 1.7;
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero { animation: fadeUp 0.4s ease both; }
+    .step-section:nth-child(1) { animation: fadeUp 0.4s ease 0.1s both; }
+    .step-section:nth-child(2) { animation: fadeUp 0.4s ease 0.2s both; }
+    .notice-card { animation: fadeUp 0.4s ease 0.3s both; }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-badge">📌 잠깐! 꼭 읽어주세요</div>
+    <p style="color:rgba(255,255,255,0.85); font-size:12px; margin-bottom:10px;">매일그램을 이용해 주셔서 감사합니다</p>
+    <h1>원활한 서비스 이용을 위해<br /><em>아래 절차</em>를 진행해주세요</h1>
+
+  </div>
+
+  <div class="container">
+
+    <!-- Step 1 -->
+    <div class="step-section">
+      <div class="step-label">
+        <div class="step-number">1</div>
+        <div class="step-title">카카오톡 친구 허용 설정</div>
+      </div>
+      <div class="step-card">
+        <div class="step-card-inner">
+          <p class="step-desc">카카오톡에서 전화번호로 친구 추가가 가능하도록 설정을 확인해주세요.</p>
+          <div class="highlight-box">
+            카카오톡 앱 → <strong>설정</strong> → <strong>친구</strong> → <strong>전화번호로 친구 추가 허용</strong> 켜기
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step-section">
+      <div class="step-label">
+        <div class="step-number">2</div>
+        <div class="step-title">카테고리별 카카오톡 계정에 메시지 보내기</div>
+      </div>
+      <div class="step-card">
+        <div class="step-card-inner">
+          <p class="step-desc">구매하신 카테고리에 해당하는 번호로 카카오톡 친구 추가 후, <strong>이름과 연락처 뒤 4자리</strong>를 보내주세요. 카테고리가 두 개 이상이면 각각 모두 진행해주세요.</p>
+          <div class="highlight-box">예시: 김그램/1234</div>
+        </div>
+        <div class="category-list" style="padding: 0 16px 16px;">
+          <div class="category-item">
+            <div class="category-badge">경제</div>
+            <div class="category-info">
+              <div class="category-phone">010-5754-8311</div>
+            </div>
+          </div>
+          <div class="category-item">
+            <div class="category-badge">문학</div>
+            <div class="category-info">
+              <div class="category-phone">010-5697-1341</div>
+            </div>
+          </div>
+          <div class="category-item">
+            <div class="category-badge">인문역사</div>
+            <div class="category-info">
+              <div class="category-phone">010-7623-0512</div>
+            </div>
+          </div>
+          <div class="category-item">
+            <div class="category-badge">외국어</div>
+            <div class="category-info">
+              <div class="category-phone">010-8117-0312</div>
+            </div>
+          </div>
+          <div class="category-item">
+            <div class="category-badge">자기계발</div>
+            <div class="category-info">
+              <div class="category-phone">010-2660-6720</div>
+            </div>
+          </div>
+          <div class="category-item">
+            <div class="category-badge">예술</div>
+            <div class="category-info">
+              <div class="category-phone">010-7695-0311</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q&A -->
+    <div class="qa-list">
+
+      <div class="qa-item">
+        <div class="qa-q"><span>Q.</span> 왜 이름과 연락처를 보내야 하나요?</div>
+        <div class="qa-a"><span>A.</span> 주문 시 입력하신 연락처와 실제 카카오톡 계정 번호가 다른 경우가 있어, 정확한 발송을 위해 확인이 필요합니다. 한 번만 진행해주시면 구독 기간 동안 매일 정상적으로 메시지를 받아보실 수 있습니다.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q"><span>Q.</span> 여러 카테고리를 구매한 경우, 메시지를 각각 따로 보내야 하나요?</div>
+        <div class="qa-a"><span>A.</span> 네, 구매하신 카테고리 수만큼 각각의 번호에 모두 메시지를 보내주셔야 합니다. 예를 들어 경제와 문학을 구매하셨다면, 두 번호 모두에 이름과 연락처 뒤 4자리를 전송해 주세요.</div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <script>
+  </script>
+</body>
+</html>
